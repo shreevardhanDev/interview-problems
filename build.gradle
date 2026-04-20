@@ -1,0 +1,21 @@
+plugins {
+    id "application"
+    id "java"
+}
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.toVersion(25)
+    targetCompatibility = JavaVersion.toVersion(25)
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+application {
+    mainClass = project.hasProperty("mainClass") ? project.mainClass : "com.example.dsa.Main"
+}
