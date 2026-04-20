@@ -1,5 +1,8 @@
 package com.example.dsa;
 
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  * Problem 094: Palindrome Partitioning
  *
@@ -14,14 +17,15 @@ public class Problem094_PalindromePartitioning {
     }
 
     // Core solution method
-static java.util.List<java.util.List<String>> partition(String s) {
-        java.util.List<java.util.List<String>> result = new java.util.ArrayList<>();
-        backtrackPartition(result, new java.util.ArrayList<>(), s, 0);
+    static List<List<String>> partition(String s) {
+        List<List<String>> result = new ArrayList<>();
+        backtrackPartition(result, new ArrayList<>(), s, 0);
         return result;
     }
-    private static void backtrackPartition(java.util.List<java.util.List<String>> result, java.util.List<String> current, String s, int index) {
+
+    private static void backtrackPartition(List<List<String>> result, List<String> current, String s, int index) {
         if (index == s.length()) {
-            result.add(new java.util.ArrayList<>(current));
+            result.add(new ArrayList<>(current));
             return;
         }
         for (int i = index + 1; i <= s.length(); i++) {
@@ -33,6 +37,7 @@ static java.util.List<java.util.List<String>> partition(String s) {
             }
         }
     }
+
     private static boolean isPalindromeString(String s) {
         int left = 0, right = s.length() - 1;
         while (left < right) {

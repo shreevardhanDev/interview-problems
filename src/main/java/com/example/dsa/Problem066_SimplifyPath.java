@@ -1,5 +1,8 @@
 package com.example.dsa;
 
+import java.util.Deque;
+import java.util.ArrayDeque;
+
 /**
  * Problem 066: Simplify Path
  *
@@ -14,8 +17,8 @@ public class Problem066_SimplifyPath {
     }
 
     // Core solution method
-static String simplifyPath(String path) {
-        java.util.Deque<String> stack = new java.util.ArrayDeque<>();
+    static String simplifyPath(String path) {
+        Deque<String> stack = new ArrayDeque<>();
         for (String part : path.split("/")) {
             if (part.isEmpty() || part.equals(".")) continue;
             if (part.equals("..")) {

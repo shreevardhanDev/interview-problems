@@ -1,5 +1,8 @@
 package com.example.dsa;
 
+import java.util.Map;
+import java.util.HashMap;
+
 /**
  * Problem 087: Clone Graph
  *
@@ -14,12 +17,13 @@ public class Problem087_CloneGraph {
     }
 
     // Core solution method
-static Node cloneGraph(Node node) {
+    static Node cloneGraph(Node node) {
         if (node == null) return null;
-        java.util.Map<Node, Node> map = new java.util.HashMap<>();
+        Map<Node, Node> map = new HashMap<>();
         return cloneNode(node, map);
     }
-    private static Node cloneNode(Node node, java.util.Map<Node, Node> map) {
+
+    private static Node cloneNode(Node node, Map<Node, Node> map) {
         if (map.containsKey(node)) return map.get(node);
         Node copy = new Node(node.val);
         map.put(node, copy);

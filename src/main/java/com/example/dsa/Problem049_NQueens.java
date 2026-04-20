@@ -1,5 +1,9 @@
 package com.example.dsa;
 
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Problem 049: N-Queens
  *
@@ -14,17 +18,17 @@ public class Problem049_NQueens {
     }
 
     // Core solution method using Java 25 modern collection patterns
-static java.util.List<java.util.List<String>> solveNQueens(int n) {
-        java.util.List<java.util.List<String>> result = new java.util.ArrayList<>();
+    static List<List<String>> solveNQueens(int n) {
+        List<List<String>> result = new ArrayList<>();
         char[][] board = new char[n][n];
-        for (int i = 0; i < n; i++) java.util.Arrays.fill(board[i], '.');
+        for (int i = 0; i < n; i++) Arrays.fill(board[i], '.');
         backtrackNQueens(result, board, 0);
-        return java.util.List.copyOf(result.stream().map(java.util.List::copyOf).toList());
+        return List.copyOf(result.stream().map(List::copyOf).toList());
     }
-    private static void backtrackNQueens(java.util.List<java.util.List<String>> result, char[][] board, int row) {
+    private static void backtrackNQueens(List<List<String>> result, char[][] board, int row) {
         int n = board.length;
         if (row == n) {
-            java.util.List<String> solution = new java.util.ArrayList<>();
+            List<String> solution = new ArrayList<>();
             for (char[] line : board) solution.add(new String(line));
             result.add(solution);
             return;

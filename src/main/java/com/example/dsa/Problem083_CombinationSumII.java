@@ -1,5 +1,9 @@
 package com.example.dsa;
 
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Problem 083: Combination Sum II
  *
@@ -14,15 +18,15 @@ public class Problem083_CombinationSumII {
     }
 
     // Core solution method using Java 25 modern collection patterns
-static java.util.List<java.util.List<Integer>> combinationSum2(int[] candidates, int target) {
-        java.util.List<java.util.List<Integer>> result = new java.util.ArrayList<>();
-        java.util.Arrays.sort(candidates);
-        backtrackCombinationSum2(result, new java.util.ArrayList<>(), candidates, target, 0);
-        return java.util.List.copyOf(result.stream().map(java.util.List::copyOf).toList());
+static List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(candidates);
+        backtrackCombinationSum2(result, new ArrayList<>(), candidates, target, 0);
+        return List.copyOf(result.stream().map(List::copyOf).toList());
     }
-    private static void backtrackCombinationSum2(java.util.List<java.util.List<Integer>> result, java.util.List<Integer> current, int[] candidates, int remaining, int start) {
+    private static void backtrackCombinationSum2(List<List<Integer>> result, List<Integer> current, int[] candidates, int remaining, int start) {
         if (remaining == 0) {
-            result.add(new java.util.ArrayList<>(current));
+            result.add(new ArrayList<>(current));
             return;
         }
         for (int i = start; i < candidates.length && candidates[i] <= remaining; i++) {

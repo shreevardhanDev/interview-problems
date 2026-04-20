@@ -1,5 +1,10 @@
 package com.example.dsa;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+
 /**
  * Problem 086: Course Schedule II
  *
@@ -14,15 +19,15 @@ public class Problem086_CourseScheduleII {
     }
 
     // Core solution method
-static int[] findOrder(int numCourses, int[][] prerequisites) {
-        java.util.List<java.util.List<Integer>> graph = new java.util.ArrayList<>();
-        for (int i = 0; i < numCourses; i++) graph.add(new java.util.ArrayList<>());
+    static int[] findOrder(int numCourses, int[][] prerequisites) {
+        List<List<Integer>> graph = new ArrayList<>();
+        for (int i = 0; i < numCourses; i++) graph.add(new ArrayList<>());
         int[] indegree = new int[numCourses];
         for (int[] prereq : prerequisites) {
             graph.get(prereq[1]).add(prereq[0]);
             indegree[prereq[0]]++;
         }
-        java.util.Queue<Integer> queue = new java.util.ArrayDeque<>();
+        Queue<Integer> queue = new ArrayDeque<>();
         for (int i = 0; i < numCourses; i++) if (indegree[i] == 0) queue.offer(i);
         int[] order = new int[numCourses];
         int index = 0;

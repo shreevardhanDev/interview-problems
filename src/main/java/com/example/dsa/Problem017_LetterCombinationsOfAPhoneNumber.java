@@ -1,5 +1,8 @@
 package com.example.dsa;
 
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  * Problem 017: Letter Combinations of a Phone Number
  *
@@ -14,14 +17,15 @@ public class Problem017_LetterCombinationsOfAPhoneNumber {
     }
 
     // Core solution method using Java 25 collection patterns
-static java.util.List<String> letterCombinations(String digits) {
-        if (digits.isEmpty()) return java.util.List.of();
+    static List<String> letterCombinations(String digits) {
+        if (digits.isEmpty()) return List.of();
         String[] mapping = {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-        java.util.List<String> result = new java.util.ArrayList<>();
+        List<String> result = new ArrayList<>();
         backtrackCombination(result, mapping, digits, 0, new StringBuilder());
-        return java.util.List.copyOf(result);
+        return List.copyOf(result);
     }
-    private static void backtrackCombination(java.util.List<String> result, String[] mapping, String digits, int index, StringBuilder current) {
+
+    private static void backtrackCombination(List<String> result, String[] mapping, String digits, int index, StringBuilder current) {
         if (index == digits.length()) {
             result.add(current.toString());
             return;

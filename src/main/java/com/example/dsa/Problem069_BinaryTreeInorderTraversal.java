@@ -1,5 +1,8 @@
 package com.example.dsa;
 
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  * Problem 069: Binary Tree Inorder Traversal
  *
@@ -14,12 +17,12 @@ public class Problem069_BinaryTreeInorderTraversal {
     }
 
     // Core solution method
-static java.util.List<Integer> inorderTraversal(TreeNode root) {
-        java.util.List<Integer> result = new java.util.ArrayList<>();
+static List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
         inorder(root, result);
         return result;
     }
-    private static void inorder(TreeNode node, java.util.List<Integer> result) {
+    private static void inorder(TreeNode node, List<Integer> result) {
         if (node == null) return;
         inorder(node.left, result);
         result.add(node.val);

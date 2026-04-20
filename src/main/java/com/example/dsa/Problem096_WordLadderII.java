@@ -1,5 +1,12 @@
 package com.example.dsa;
 
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.HashMap;
+
 /**
  * Problem 096: Word Ladder II
  *
@@ -14,17 +21,17 @@ public class Problem096_WordLadderII {
     }
 
     // Core solution method
-static java.util.List<java.util.List<String>> findLadders(String beginWord, String endWord, java.util.List<String> wordList) {
-        java.util.Set<String> dict = new java.util.HashSet<>(wordList);
-        java.util.List<java.util.List<String>> results = new java.util.ArrayList<>();
+    static List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
+        Set<String> dict = new HashSet<>(wordList);
+        List<List<String>> results = new ArrayList<>();
         if (!dict.contains(endWord)) return results;
-        java.util.Map<String, java.util.List<String>> tree = new java.util.HashMap<>();
-        java.util.Set<String> current = new java.util.HashSet<>();
+        Map<String, List<String>> tree = new HashMap<>();
+        Set<String> current = new HashSet<>();
         current.add(beginWord);
         dict.remove(beginWord);
         boolean found = false;
         while (!current.isEmpty() && !found) {
-            java.util.Set<String> nextLevel = new java.util.HashSet<>();
+            Set<String> nextLevel = new HashSet<>();
             for (String word : current) {
                 for (int i = 0; i < word.length(); i++) {
                     char[] chars = word.toCharArray();
@@ -34,7 +41,7 @@ static java.util.List<java.util.List<String>> findLadders(String beginWord, Stri
                         String next = new String(chars);
                         if (dict.contains(next)) {
                             nextLevel.add(next);
-                            tree.computeIfAbsent(word, _ -> new java.util.ArrayList<>()).add(next);
+                            tree.computeIfAbsent(word, _ -> new ArrayList<>()).add(next);
                         }
                     }
                 }
@@ -44,13 +51,14 @@ static java.util.List<java.util.List<String>> findLadders(String beginWord, Stri
             current = nextLevel;
         }
         if (found) {
-            backtrackLadders(results, new java.util.ArrayList<>(java.util.List.of(beginWord)), beginWord, endWord, tree);
+            backtrackLadders(results, new ArrayList<>(List.of(beginWord)), beginWord, endWord, tree);
         }
         return results;
     }
-    private static void backtrackLadders(java.util.List<java.util.List<String>> results, java.util.List<String> path, String word, String endWord, java.util.Map<String, java.util.List<String>> tree) {
+
+    private static void backtrackLadders(List<List<String>> results, List<String> path, String word, String endWord, Map<String, List<String>> tree) {
         if (word.equals(endWord)) {
-            results.add(new java.util.ArrayList<>(path));
+            results.add(new ArrayList<>(path));
             return;
         }
         if (!tree.containsKey(word)) return;
