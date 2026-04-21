@@ -30,7 +30,7 @@ package com.example.dsa;
 public class Problem004_MedianOfTwoSortedArrays {
     public static void main(String[] args) {
         System.out.println("Running Problem004_MedianOfTwoSortedArrays");
-        System.out.println(findMedianSortedArrays(new int[] {1, 3}, new int[] {2}));
+        System.out.println(findMedianSortedArrays(new int[] {1, 3,5}, new int[] {2,4}));
     }
 
     // Core solution method

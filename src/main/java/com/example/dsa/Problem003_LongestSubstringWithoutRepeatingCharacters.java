@@ -1,5 +1,9 @@
 package com.example.dsa;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Problem 003: Longest Substring Without Repeating Characters
  *
@@ -33,7 +37,9 @@ package com.example.dsa;
 public class Problem003_LongestSubstringWithoutRepeatingCharacters {
     public static void main(String[] args) {
         System.out.println("Running Problem003_LongestSubstringWithoutRepeatingCharacters");
-        System.out.println(lengthOfLongestSubstring("abcabcbb")); // Output: 3 ("abc")
+        String st = "abcybckl";
+//        System.out.println(lengthOfLongestSubstring(st)); // Output: 5 ("ybckl")
+        System.out.println(lengthOfLongestSubstring(st)); // Output: 5 ("ybckl")
     }
 
     /**
@@ -57,11 +63,35 @@ public class Problem003_LongestSubstringWithoutRepeatingCharacters {
             
             // Update maximum length with current window size
             maxLen = Math.max(maxLen, i - start + 1);
-            
+            IO.println(s.substring(start, i+1));
             // Store next index (i+1) to indicate where we should move if we see this char again
             lastIndex[currentChar] = i + 1;
         }
         
         return maxLen;
     }
+
+//    static int lengthOfLongestSubstringHashMap(String s) {
+//        // Array tracks last seen index of each character (ASCII 0-127)
+//        Map<Character, Integer> lastIndex = new HashMap<>();
+//
+//        int start = 0;  // Left pointer of sliding window
+//        int maxLen = 0; // Maximum length found so far
+//
+//        for (int i = 0; i < s.length(); i++) {
+//            char currentChar = s.charAt(i);
+//
+//            // If character was seen before, move start pointer to skip previous occurrence
+//            start = Math.max(start, lastIndex.getOrDefault(currentChar, 0));
+//
+//            // Update maximum length with current window size
+//            maxLen = Math.max(maxLen, i - start + 1);
+//            IO.println(s.substring(start, i+1));
+//            // Store next index (i+1) to indicate where we should move if we see this char again
+//            lastIndex.put(currentChar,  i + 1);
+//        }
+//
+//        return maxLen;
+//    }
+
 }
