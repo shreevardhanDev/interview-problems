@@ -19,6 +19,7 @@ public class InterviewQuestion010_SingletonPattern {
             synchronized (InterviewQuestion010_SingletonPattern.class) {
                 if (instance == null) {
                     instance = new InterviewQuestion010_SingletonPattern();
+                    instance.showMessage();
                 }
             }
         }
@@ -32,6 +33,8 @@ public class InterviewQuestion010_SingletonPattern {
     public static void main(String[] args) {
         System.out.println("Running InterviewQuestion010_SingletonPattern");
         InterviewQuestion010_SingletonPattern singleton = InterviewQuestion010_SingletonPattern.getInstance();
-        singleton.showMessage();
+        singleton = InterviewQuestion010_SingletonPattern.getInstance();
+        singleton = InterviewQuestion010_SingletonPattern.getInstance();
+        singleton = InterviewQuestion010_SingletonPattern.getInstance();
     }
 }

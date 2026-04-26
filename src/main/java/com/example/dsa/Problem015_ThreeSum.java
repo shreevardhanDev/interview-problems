@@ -19,7 +19,7 @@ public class Problem015_ThreeSum {
     public static void main(String[] args) {
         System.out.println("Running Problem015_ThreeSum");
         int[] nums = {-1, 0, 1, 2, -1, -4};
-        System.out.println(threeSum(nums)); // [[-1,-1,2], [-1,0,1]]
+        System.out.println(threeSum(nums, 0)); // [[-1,-1,2], [-1,0,1]]
     }
 
     /**
@@ -28,39 +28,39 @@ public class Problem015_ThreeSum {
      * @param nums the input array
      * @return list of unique triplets summing to zero
      */
-static List<List<Integer>> threeSum(int[] nums) {
+    static List<List<Integer>> threeSum(int[] nums, int target) {
         List<List<Integer>> result = new ArrayList<>();
-        
-        // Sort to enable two-pointer approach and duplicate skipping
         Arrays.sort(nums);
-        
+
         for (int i = 0; i < nums.length - 2; i++) {
-            // Skip duplicate values for outer loop
+            // Skip duplicates for i
             if (i > 0 && nums[i] == nums[i - 1]) continue;
-            
-            // If smallest possible sum is positive, no zero-sum triplets exist
-            if (nums[i] > 0) break;
-            
-            // Two-pointer search for remaining two numbers
+
+            // Remove the target == 0 specific shortcut
+            // Don't do: if (nums[i] > 0) break; → not valid for arbitrary target
+
             int left = i + 1, right = nums.length - 1;
+
             while (left < right) {
                 int sum = nums[i] + nums[left] + nums[right];
-                
-                if (sum == 0) {
+
+                if (sum == target) {
                     result.add(List.of(nums[i], nums[left], nums[right]));
-                    
-                    // Skip duplicate values for left pointer
-                    left++; right--;
+                    left++;
+                    right--;
+
+                    // Skip duplicates for left
                     while (left < right && nums[left] == nums[left - 1]) left++;
+                    // Skip duplicates for right
                     while (left < right && nums[right] == nums[right + 1]) right--;
-                } else if (sum < 0) {
+                } else if (sum < target) {
                     left++;  // Need larger sum
                 } else {
                     right--; // Need smaller sum
                 }
             }
         }
-        
+
         return List.copyOf(result);
     }
 }

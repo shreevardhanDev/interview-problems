@@ -14,13 +14,13 @@ package com.example.interview_questions;
 public class InterviewQuestion025_LongestPalindromicSubstring {
     public static void main(String[] args) {
         System.out.println("Running InterviewQuestion025_LongestPalindromicSubstring");
-        String s = "babad";
+        String s = "babadada";
         String result = longestPalindrome(s);
         System.out.println(result); // Output: bab
     }
 
     static String longestPalindrome(String s) {
-        if (s == null || s.length() < 1) return "";
+        if (s == null || s.isEmpty()) return "";
         int start = 0, end = 0;
         for (int i = 0; i < s.length(); i++) {
             int len1 = expandAroundCenter(s, i, i);

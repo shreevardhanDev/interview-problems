@@ -16,12 +16,12 @@ import java.util.concurrent.Executors;
 public class InterviewQuestion034_InternalWorkingOfExecutorFramework {
     public static void main(String[] args) {
         System.out.println("Running InterviewQuestion034_InternalWorkingOfExecutorFramework");
-        ExecutorService executor = Executors.newFixedThreadPool(2);
+        try(ExecutorService executor = Executors.newFixedThreadPool(2)){
         for (int i = 0; i < 5; i++) {
             executor.submit(() -> {
                 System.out.println("Task executed by " + Thread.currentThread().getName());
             });
         }
-        executor.shutdown();
+        }
     }
 }

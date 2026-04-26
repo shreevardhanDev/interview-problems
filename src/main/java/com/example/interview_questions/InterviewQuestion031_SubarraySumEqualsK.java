@@ -17,8 +17,8 @@ import java.util.Map;
 public class InterviewQuestion031_SubarraySumEqualsK {
     public static void main(String[] args) {
         System.out.println("Running InterviewQuestion031_SubarraySumEqualsK");
-        int[] nums = {1, 1, 1};
-        int k = 2;
+        int[] nums = {1,1,1,1, 2, 1,0,0,0,0,0,0,0, 2, 1,2,1,2,3,9,9,9,9,9,9,9,9,9,9,9,1,1,0,1,2,3};
+        int k = 3;
         int result = subarraySum(nums, k);
         System.out.println(result); // Output: 2
     }
@@ -30,7 +30,8 @@ public class InterviewQuestion031_SubarraySumEqualsK {
         for (int num : nums) {
             sum += num;
             if (map.containsKey(sum - k)) {
-                count += map.get(sum - k);
+                int value = map.get(sum - k);
+                count += value;
             }
             map.put(sum, map.getOrDefault(sum, 0) + 1);
         }
