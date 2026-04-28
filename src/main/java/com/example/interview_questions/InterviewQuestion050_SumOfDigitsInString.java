@@ -1,8 +1,5 @@
 package com.example.interview_questions;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
 /**
  * Interview Question 050: Sum of Digits in String
  *
